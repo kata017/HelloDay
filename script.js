@@ -1,5 +1,11 @@
 const userName = "Kata";
 
+const defaultLocation = {
+    city: "Budapest",
+    latitude: 47.4979,
+    longitude: 19.0402
+};
+
 const greetingElement = document.getElementById("greeting");
 const dayElement = document.getElementById("day");
 const dateElement = document.getElementById("date");
@@ -220,32 +226,6 @@ async function updateWeather(latitude, longitude)
 }
 
 // ----------------------------------------
-// Get location from IP
-// ----------------------------------------
-async function getLocationFromIP() 
-{
-    const response = await fetch("https://api.ipapi.is/");
-
-    if (!response.ok) 
-    {
-        throw new Error("IP location lookup failed");
-    }
-
-    const data = await response.json();
-
-    if (!data.lat || !data.lon) 
-    {
-        throw new Error("IP location coordinates unavailable");
-    }
-
-    return {
-        latitude: data.lat,
-        longitude: data.lon,
-        city: data.city || "Unknown location"
-    };
-}
-
-// ----------------------------------------
 // Get user's location
 // ----------------------------------------
 function getUserLocation() 
@@ -286,19 +266,8 @@ function getUserLocation()
         {
             console.error("Geolocation error:", error);
 
-            getLocationFromIP().then(async (location) => 
-            {
-                weatherLocationElement.textContent = location.city;
-                await updateWeather( location.latitude, location.longitude);
-            })
-            .catch((error) => 
-            {
-                console.error("IP location error:", error);
-
-                weatherTemperatureElement.textContent = "🌤️ Weather unavailable";
-                weatherLocationElement.textContent = "Location unavailable";
-                weatherDescriptionElement.textContent = "Unable to determine your location.";
-            });
+            weatherLocationElement.textContent = defaultLocation.city;
+            updateWeather(defaultLocation.latitude, defaultLocation.longitude);
         },
         {
             enableHighAccuracy: false,
