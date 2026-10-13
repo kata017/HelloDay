@@ -161,7 +161,7 @@ Once deployed, the widget will be available as a standalone web page and can als
 
 ## 📸 Preview
 
-*Coming soon.*
+🚀 **Live Demo:** [HelloDay](https://kata017.github.io/HelloDay/)
 
 ---
 
