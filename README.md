@@ -161,7 +161,11 @@ Once deployed, the widget will be available as a standalone web page and can als
 
 ## 📸 Preview
 
-🚀 **Live Demo:** [HelloDay](https://kata017.github.io/HelloDay/)
+HelloDay is live and available as a standalone web widget.
+
+🚀 **[Open HelloDay](https://kata017.github.io/HelloDay/)**
+
+The widget can also be embedded into a Notion dashboard.
 
 ---
 
