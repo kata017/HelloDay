@@ -12,19 +12,17 @@ The widget is designed to be easily embedded into a Notion dashboard while also 
 
 ## ✨ Features
 
-- 👋 Dynamic greeting based on the time of day
-- 📅 Current date
-- 🕐 Live clock
-- 🌤️ Current weather
-- 🌡️ Temperature in Celsius
-- 📍 Automatic location detection
-- 🏙️ Automatic city detection
-- 🌙 Day / night weather icons
-- 🎨 Minimal, transparent design
+- 👋 Time-based greeting
+- 📅 Current day and date
+- 🕒 Live clock
+- 🌤️ Live weather information
+- 📍 Automatic browser geolocation
+- 🏙️ Budapest fallback for embedded environments
+- 🌙 Day/night-aware weather icons
 - 📱 Responsive layout
-- ✨ Subtle weather animation
+- 🫧 Transparent background for seamless Notion embedding
+- 🎨 Minimal and playful UI
 - ♿ Reduced-motion support
-- ⚠️ Location permission handling
 
 ---
 
@@ -98,15 +96,22 @@ The main information hierarchy is:
 
 ## 🌤️ Weather
 
-Weather data is provided by the [Open-Meteo API](https://open-meteo.com/).
+HelloDay uses the [Open-Meteo API](https://open-meteo.com/) to display current weather conditions.
 
-HelloDay uses the current weather information provided by Open-Meteo, including:
+The widget uses the following location strategy:
 
-- Temperature
+1. **Browser geolocation** – when location permission is available, HelloDay uses the user's current coordinates.
+2. **Fallback location** – if browser geolocation is unavailable or blocked, HelloDay uses Budapest as the default location.
+
+This fallback is especially useful when HelloDay is embedded in environments such as Notion, where browser geolocation may be restricted by iframe permissions.
+
+Weather data includes:
+
+- Current temperature
 - Weather condition
-- Day / night status
-
-No API key or backend is required.
+- Day/night state
+- Weather icon
+- Location
 
 ---
 
@@ -158,6 +163,24 @@ Once deployed, the widget will be available as a standalone web page and can als
 - [ ] Additional personalization options
 
 ---
+
+## 🧩 Notion Integration
+
+HelloDay can be embedded directly into a Notion dashboard.
+
+Because embedded content may have restricted access to browser geolocation, HelloDay includes a fallback location to ensure that weather information remains available inside Notion.
+
+### Embed URL
+
+Use the GitHub Pages URL:
+
+https://kata017.github.io/HelloDay/
+
+For Notion, the widget can be embedded using:
+
+**Notion → `/embed` → paste the URL**
+
+The widget is designed with a transparent background so it blends naturally into a Notion workspace.
 
 ## 📸 Preview
 
